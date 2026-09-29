@@ -2,36 +2,1115 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Iphigénie Prud'homme</title>
+    <title>Iphigénie Prud'homme | Computer Engineering</title>
 
-    <!-- Main display font -->
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
 
-    <!-- Our CSS -->
-    <link rel="stylesheet" href="style.css">
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #f7f7f5;
+            color: #111;
+            font-family: monospace;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 24px 5%;
+
+            border-bottom: 1px solid #111;
+
+            background: #f7f7f5;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -5px;
+
+            width: 0;
+            height: 1px;
+
+            background: #111;
+
+            transition: width 0.2s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero-wrapper {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 70px auto 0;
+        }
+
+        .hero-top {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-end;
+
+            margin-bottom: 14px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+
+            letter-spacing: 0.08em;
+
+            opacity: 0.55;
+        }
+
+        .hero-location {
+            font-size: 11px;
+
+            opacity: 0.55;
+        }
+
+        #hero {
+            width: 100%;
+            height: 430px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #000;
+
+            border: 1px solid #111;
+        }
+
+        #p5-background {
+            width: 100%;
+            height: 100%;
+        }
+
+        #p5-background canvas {
+            display: block;
+        }
+
+
+        /* Small interface details */
+
+        .hero-status {
+            position: absolute;
+
+            top: 16px;
+            left: 18px;
+
+            color: white;
+
+            font-size: 10px;
+
+            letter-spacing: 0.08em;
+
+            pointer-events: none;
+        }
+
+        .hero-player {
+            position: absolute;
+
+            top: 16px;
+            right: 18px;
+
+            color: white;
+
+            font-size: 10px;
+
+            letter-spacing: 0.08em;
+
+            pointer-events: none;
+        }
+
+        .hero-number {
+            position: absolute;
+
+            right: 18px;
+            bottom: 16px;
+
+            color: white;
+
+            font-size: 10px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 70px auto 120px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 60px;
+        }
+
+        .intro-label {
+            font-size: 11px;
+
+            opacity: 0.5;
+
+            letter-spacing: 0.08em;
+        }
+
+        .intro h1 {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            font-size: clamp(36px, 5vw, 68px);
+
+            font-weight: 400;
+
+            line-height: 0.98;
+
+            letter-spacing: -0.04em;
+        }
+
+        .intro p {
+            max-width: 650px;
+
+            margin: 30px 0 0;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            color: #333;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 90px 0;
+
+            border-top: 1px solid #111;
+        }
+
+        .section-heading {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: baseline;
+
+            margin-bottom: 55px;
+        }
+
+        .section-number {
+            font-size: 11px;
+
+            opacity: 0.5;
+
+            letter-spacing: 0.08em;
+        }
+
+        h2 {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            font-size: clamp(32px, 4vw, 52px);
+
+            font-weight: 400;
+
+            letter-spacing: -0.04em;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 60px;
+        }
+
+        .about-title {
+            font-size: 12px;
+
+            opacity: 0.5;
+        }
+
+        .about-text {
+            max-width: 680px;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            color: #333;
+        }
+
+        .about-text p {
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .interests {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 35px;
+        }
+
+        .interest {
+            border: 1px solid #aaa;
+
+            padding: 8px 12px;
+
+            font-size: 10px;
+
+            letter-spacing: 0.05em;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            border-top: 1px solid #111;
+        }
+
+        .project {
+            display: grid;
+
+            grid-template-columns: 60px 1fr auto;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding: 32px 0;
+
+            border-bottom: 1px solid #bbb;
+
+            text-decoration: none;
+
+            color: #111;
+
+            transition:
+                padding 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .project:hover {
+            padding-left: 15px;
+            padding-right: 15px;
+
+            background: #ededeb;
+        }
+
+        .project-number {
+            font-size: 11px;
+
+            opacity: 0.45;
+        }
+
+        .project-name {
+            font-family: Arial, sans-serif;
+
+            font-size: 22px;
+
+            margin-bottom: 8px;
+        }
+
+        .project-description {
+            font-size: 11px;
+
+            color: #666;
+        }
+
+        .project-type {
+            font-size: 10px;
+
+            opacity: 0.55;
+
+            text-align: right;
+        }
+
+        .project-arrow {
+            font-size: 18px;
+
+            opacity: 0;
+
+            transform: translateX(-8px);
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .project:hover .project-arrow {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            border-top: 1px solid #bbb;
+            border-left: 1px solid #bbb;
+        }
+
+        .skill-group {
+            padding: 25px;
+
+            border-right: 1px solid #bbb;
+            border-bottom: 1px solid #bbb;
+        }
+
+        .skill-group-title {
+            font-size: 11px;
+
+            opacity: 0.5;
+
+            margin-bottom: 20px;
+        }
+
+        .skill-group p {
+            margin: 0;
+
+            font-size: 13px;
+
+            line-height: 2;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            min-height: 450px;
+        }
+
+        .contact-content {
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 60px;
+        }
+
+        .contact-text {
+            max-width: 650px;
+        }
+
+        .contact-text p {
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-top: 0;
+        }
+
+        .contact-links {
+            margin-top: 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        .contact-links a {
+            width: fit-content;
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            border-bottom: 1px solid #111;
+
+            padding-bottom: 4px;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.5;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 25px 0;
+
+            border-top: 1px solid #111;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 10px;
+
+            opacity: 0.5;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 18px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .hero-wrapper {
+                width: 92%;
+
+                margin-top: 35px;
+            }
+
+            .hero-top {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 6px;
+            }
+
+            #hero {
+                height: 300px;
+            }
+
+            .intro {
+                width: 92%;
+
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+
+                margin-top: 55px;
+
+                margin-bottom: 80px;
+            }
+
+            main {
+                width: 92%;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-heading {
+                margin-bottom: 40px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+            .project {
+                grid-template-columns: 35px 1fr;
+
+                gap: 15px;
+
+                padding: 25px 0;
+            }
+
+            .project-type {
+                display: none;
+            }
+
+            .project-arrow {
+                display: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+            footer {
+                width: 92%;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <!-- Frame around the page -->
-    <div class="frame"></div>
 
-    <!-- Main name -->
-    <h1>
-        IPHIGÉNIE<br>
-        PRUD'HOMME
-    </h1>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-    <!-- Important information -->
-    <p class="info">
-        COMPUTER ENGINEERING
-    </p>
+    <header>
 
-    <p class="location">
-        MONTRÉAL
-    </p>
+        <div class="logo">
+            IPHIGÉNIE PRUD'HOMME
+        </div>
+
+        <nav>
+
+            <a href="#about">ABOUT</a>
+
+            <a href="#projects">PROJECTS</a>
+
+            <a href="#skills">SKILLS</a>
+
+            <a href="#contact">CONTACT</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         ANIMATED HERO
+    ========================= -->
+
+    <div class="hero-wrapper">
+
+        <div class="hero-top">
+
+            <div class="hero-label">
+                COMPUTER ENGINEERING // PORTFOLIO
+            </div>
+
+            <div class="hero-location">
+                MONTRÉAL, QC
+            </div>
+
+        </div>
+
+
+        <section id="hero">
+
+            <div id="p5-background"></div>
+
+            <div class="hero-status">
+                SYSTEM // ONLINE
+            </div>
+
+            <div class="hero-player">
+                PLAYER 01
+            </div>
+
+            <div class="hero-number">
+                [01]
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTRO
+    ========================= -->
+
+    <div class="intro">
+
+        <div class="intro-label">
+            HELLO
+        </div>
+
+        <div>
+
+            <h1>
+                Building at the intersection of hardware and software.
+            </h1>
+
+            <p>
+                I am a Computer Engineering student interested in
+                embedded systems, digital hardware, robotics and
+                the way software interacts with the physical world.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <main>
+
+
+        <!-- =========================
+             ABOUT
+        ========================= -->
+
+        <section id="about">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <h2>
+                    About
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-title">
+                    A LITTLE ABOUT ME
+                </div>
+
+
+                <div class="about-text">
+
+                    <p>
+                        I enjoy understanding how systems work from
+                        the inside out. That means moving between
+                        code, circuits, digital logic and physical
+                        hardware rather than staying in only one area.
+                    </p>
+
+                    <p>
+                        Through school and personal projects, I have
+                        worked with languages and tools including C++,
+                        Java, Python, MATLAB, VHDL, Arduino and FPGA
+                        development.
+                    </p>
+
+                    <p>
+                        I am especially interested in robotics,
+                        embedded systems and projects where software
+                        has to interact with something physical.
+                    </p>
+
+
+                    <div class="interests">
+
+                        <span class="interest">
+                            ROBOTICS
+                        </span>
+
+                        <span class="interest">
+                            EMBEDDED SYSTEMS
+                        </span>
+
+                        <span class="interest">
+                            DIGITAL HARDWARE
+                        </span>
+
+                        <span class="interest">
+                            SOFTWARE
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROJECTS
+        ========================= -->
+
+        <section id="projects">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <h2>
+                    Projects
+                </h2>
+
+            </div>
+
+
+            <div class="projects">
+
+
+                <a href="#" class="project">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <div class="project-name">
+                            Company Data Indexing System
+                        </div>
+
+                        <div class="project-description">
+                            Data structures, indexing and performance
+                            comparison in Java.
+                        </div>
+
+                    </div>
+
+                    <div class="project-type">
+                        JAVA
+                    </div>
+
+                    <div class="project-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="project">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <div class="project-name">
+                            4-Player Red Light, Green Light
+                        </div>
+
+                        <div class="project-description">
+                            Multiplayer game logic implemented as a
+                            finite-state machine on an FPGA.
+                        </div>
+
+                    </div>
+
+                    <div class="project-type">
+                        VHDL / FPGA
+                    </div>
+
+                    <div class="project-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="project">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <div class="project-name">
+                            Flower Blooming System
+                        </div>
+
+                        <div class="project-description">
+                            Arduino-based system controlling the
+                            opening and closing of a physical mechanism.
+                        </div>
+
+                    </div>
+
+                    <div class="project-type">
+                        ARDUINO
+                    </div>
+
+                    <div class="project-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SKILLS
+        ========================= -->
+
+        <section id="skills">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <h2>
+                    Skills
+                </h2>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-group">
+
+                    <div class="skill-group-title">
+                        PROGRAMMING
+                    </div>
+
+                    <p>
+                        C++<br>
+                        Java<br>
+                        Python<br>
+                        JavaScript<br>
+                        MATLAB
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <div class="skill-group-title">
+                        HARDWARE
+                    </div>
+
+                    <p>
+                        VHDL<br>
+                        FPGA<br>
+                        Arduino<br>
+                        Digital Logic<br>
+                        Computer Architecture
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <div class="skill-group-title">
+                        TOOLS
+                    </div>
+
+                    <p>
+                        Git<br>
+                        GitHub<br>
+                        JUnit<br>
+                        VS Code<br>
+                        Eclipse
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================= -->
+
+        <section id="contact" class="contact">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <h2>
+                    Contact
+                </h2>
+
+            </div>
+
+
+            <div class="contact-content">
+
+                <div class="about-title">
+                    LET'S CONNECT
+                </div>
+
+
+                <div class="contact-text">
+
+                    <p>
+                        Interested in engineering, robotics,
+                        embedded systems or building something
+                        interesting together?
+                    </p>
+
+
+                    <div class="contact-links">
+
+                        <a href="mailto:your-email@example.com">
+                            your-email@example.com
+                        </a>
+
+                        <a href="#">
+                            GITHUB →
+                        </a>
+
+                        <a href="#">
+                            LINKEDIN →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <span>
+            IPHIGÉNIE PRUD'HOMME
+        </span>
+
+        <span>
+            © 2026
+        </span>
+
+    </footer>
+
+
+
+    <!-- =========================
+         P5.JS
+    ========================= -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js"></script>
+
+    <script src="sketch.js"></script>
+
 
 </body>
 

@@ -1,78 +1,59 @@
-/* Page */
-body {
-    margin: 0;
-    background: #f4f3ef;
-    color: #111;
+/* P5 animation */
+
+#hero {
+    width: 90%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 60px auto;
+
+    background: black;
     overflow: hidden;
 }
 
-
-/* Thin frame */
-.frame {
-    position: fixed;
-
-    top: 18px;
-    right: 18px;
-    bottom: 18px;
-    left: 18px;
-
-    border: 1px solid #222;
+#p5-background {
+    width: 100%;
+    height: 100%;
 }
 
-
-/* Name */
-h1 {
-    position: absolute;
-
-    left: 6vw;
-    top: 16vh;
-
-    margin: 0;
-
-    font-family: "Instrument Serif", serif;
-    font-size: 11vw;
-    line-height: 0.78;
-    font-weight: 400;
-
-    letter-spacing: -3px;
+#p5-background canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
+/* Smaller screens */
 
+@media (max-width: 700px) {
 
-/* Small information */
-.info,
-.location {
-    position: fixed;
+    header {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-}
+    nav {
+        gap: 15px;
+    }
 
+    #hero {
+        width: 92%;
+        height: 300px;
+        margin: 30px auto;
+    }
 
-/* Bottom left */
-.info {
-    left: 6vw;
-    bottom: 6vh;
-}
+    main {
+        padding: 0 6%;
+    }
 
+    section:not(#hero) {
+        padding: 70px 0;
+    }
 
-/* Bottom right */
-.location {
-    right: 6vw;
-    bottom: 6vh;
-}
+    h2 {
+        font-size: 26px;
+    }
 
-
-/* Small cross */
-body::after {
-    content: "+";
-
-    position: fixed;
-
-    left: 50%;
-    top: 52%;
-
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 200;
+    p {
+        font-size: 14px;
+    }
 }
