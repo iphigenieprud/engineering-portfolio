@@ -1,0 +1,78 @@
+/* Page */
+body {
+    margin: 0;
+    background: #f4f3ef;
+    color: #111;
+    overflow: hidden;
+}
+
+
+/* Thin frame */
+.frame {
+    position: fixed;
+
+    top: 18px;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+
+    border: 1px solid #222;
+}
+
+
+/* Name */
+h1 {
+    position: absolute;
+
+    left: 6vw;
+    top: 16vh;
+
+    margin: 0;
+
+    font-family: "Instrument Serif", serif;
+    font-size: 11vw;
+    line-height: 0.78;
+    font-weight: 400;
+
+    letter-spacing: -3px;
+}
+
+
+/* Small information */
+.info,
+.location {
+    position: fixed;
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* Bottom left */
+.info {
+    left: 6vw;
+    bottom: 6vh;
+}
+
+
+/* Bottom right */
+.location {
+    right: 6vw;
+    bottom: 6vh;
+}
+
+
+/* Small cross */
+body::after {
+    content: "+";
+
+    position: fixed;
+
+    left: 50%;
+    top: 52%;
+
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+}
