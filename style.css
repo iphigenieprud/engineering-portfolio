@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Meddon&display=swap');
+/* Makes width and height calculations more predictable */
+* {
+    box-sizing: border-box;
+}
+
+/* Removes the browser's default spacing */
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    /* Makes the page fill the entire browser window */
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Prevents anything from creating sideways scrolling */
+body {
+    overflow-x: hidden;
+}
+/* Main page container */
+.page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Controls the whole top navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    /* Space around the header */
+    padding: 24px 3vw;
+
+    /* Puts logo on left and navigation on right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Prevents content from overflowing */
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+
+.logo {
+    font-family: "Meddon", cursive;
+
+    /* Size of your name */
+    font-size: clamp(18px, 1.8vw, 24px);
+
+    font-weight: 400;
+
+    color: #171717;
+    text-decoration: none;
+
+    /* Keeps your name on one line */
+    white-space: nowrap;
+
+    /* Allows the logo to shrink if needed */
+    flex-shrink: 1;
+}
+
+/* Navigation items */
+.navigation {
+    display: flex;
+
+    /* Space between ABOUT, PROJECTS and CONTACT */
+    gap: clamp(12px, 2vw, 24px);
+
+    /* Keeps navigation together */
+    flex-shrink: 0;
+}
+
+/* Navigation text */
+.navigation a {
+    font-family: "IBM Plex Sans", sans-serif;
+
+    /* Size of navigation text */
+    font-size: clamp(8px, 0.9vw, 11px);
+
+    font-weight: 600;
+
+    /* Spacing between letters */
+    letter-spacing: 0.08em;
+
+    color: #171717;
+    text-decoration: none;
+
+    /* Prevents words from breaking */
+    white-space: nowrap;
+}
+
+/* Makes links slightly transparent when hovered */
+.navigation a:hover {
+    opacity: 0.5;
+}
+body {
+    background-color: #7a7a7d32;
+    color: black;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* Collection-style titles */
+h1,
+h2,
+h3,
+.collection-title {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Small catalogue labels */
+.label,
+.project-number,
+.category,
+nav {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* Normal text */
+p,
+.description {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+}
+/* Controls the bottom of the page */
+.footer {
+    width: 100%;
+    padding: 20px 3vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+
+    color: #171717;
+    opacity: 0.55;
+}
+
+/* Keeps the footer text readable on smaller screens */
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}
