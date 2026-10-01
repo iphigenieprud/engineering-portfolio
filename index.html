@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,62 +18,302 @@
     >
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
     <!-- Background scribble animation -->
     <div id="scribble-container"></div>
 
+
     <div class="page">
 
+
+        <!-- Header -->
+
         <header class="header">
-            <div class="logo">Iphigénie Prud'homme</div>
+
+            <div class="logo">
+                Iphigénie Prud'homme
+            </div>
 
             <nav class="navigation">
-                <a href="#about">(ABOUT)</a>
-                <a href="#projects">(PROJECTS)</a>
-                <a href="#contact">(CONTACT)</a>
+
+                <a href="#about">
+                    [ABOUT]
+                </a>
+
+                <a href="#projects">
+                    [PROJECTS]
+                </a>
+
+                <a href="#contact">
+                    [CONTACT]
+                </a>
+
             </nav>
+
         </header>
+
+
+        <!-- Welcome animation -->
 
         <main id="canvas-container"></main>
 
-        <section class="project-gallery" id="projects">
 
-            <div class="project-image" data-number="01">
-                <img src="images/project1.jpg" alt="Project 1">
+        <!-- Project filters -->
+
+        <section class="project-filters">
+
+
+            <!-- All -->
+
+            <button
+                class="filter-main"
+                data-filter="all"
+            >
+                [ ALL ]
+            </button>
+
+
+            <!-- Hardware -->
+
+            <div class="filter-group">
+
+                <button
+                    class="filter-main"
+                    data-filter="hardware"
+                >
+                    [ HARDWARE &amp; EMBEDDED ]
+                </button>
+
+                <div class="filter-options">
+
+                    <button data-filter="embedded">
+                        EMBEDDED SYSTEMS
+                    </button>
+
+                    <button data-filter="robotics">
+                        ROBOTICS &amp; PROTOTYPING
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="project-image" data-number="02">
-                <img src="images/project2.jpg" alt="Project 2">
+
+            <!-- Software -->
+
+            <div class="filter-group">
+
+                <button
+                    class="filter-main"
+                    data-filter="software"
+                >
+                    [ SOFTWARE &amp; ALGORITHMS ]
+                </button>
+
+                <div class="filter-options">
+
+                    <button data-filter="software-development">
+                        SOFTWARE DEVELOPMENT
+                    </button>
+
+                    <button data-filter="games">
+                        GAMES &amp; CREATIVE CODING
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="project-image" data-number="03">
-                <img src="images/project3.jpg" alt="Project 3">
+
+        </section>
+
+
+        <!-- Project gallery -->
+
+        <section
+            class="project-gallery"
+            id="projects"
+        >
+
+            <div
+                class="project-image"
+                data-category="embedded"
+                data-number="01"
+            >
+                <img
+                    src="images/project1.jpg"
+                    alt="Project 1"
+                >
             </div>
 
-            <div class="project-image" data-number="04">
-                <img src="images/project4.jpg" alt="Project 4">
+
+            <div
+                class="project-image"
+                data-category="robotics"
+                data-number="02"
+            >
+                <img
+                    src="images/project2.jpg"
+                    alt="Project 2"
+                >
+            </div>
+
+
+            <div
+                class="project-image"
+                data-category="software-development"
+                data-number="03"
+            >
+                <img
+                    src="images/project3.jpg"
+                    alt="Project 3"
+                >
+            </div>
+
+
+            <div
+                class="project-image"
+                data-category="games"
+                data-number="04"
+            >
+                <img
+                    src="images/project4.jpg"
+                    alt="Project 4"
+                >
             </div>
 
         </section>
 
+
+        <!-- Footer -->
+
         <footer class="footer">
-            <span>© 2026 Iphigénie Prud'homme</span>
-            <span>Computer Engineering Student</span>
+
+            <span>
+                © 2026 Iphigénie Prud'homme
+            </span>
+
+            <span>
+                Computer Engineering Student
+            </span>
+
         </footer>
+
 
     </div>
 
+
     <!-- p5.js -->
+
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
 
-    <!-- Main portfolio animation -->
+
+    <!-- Welcome animation -->
+
     <script src="sketch.js"></script>
 
-    <!-- Background scribble animation -->
+
+    <!-- Scribble animation -->
+
     <script src="scribble.js"></script>
+
+
+    <!-- Project filtering -->
+
+    <script>
+
+        const filterButtons =
+            document.querySelectorAll(".project-filters button");
+
+        const projects =
+            document.querySelectorAll(".project-image");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const selectedFilter =
+                    button.dataset.filter;
+
+
+                projects.forEach(project => {
+
+                    const category =
+                        project.dataset.category;
+
+
+                    /* Show everything */
+
+                    if (selectedFilter === "all") {
+
+                        project.style.display = "";
+
+                    }
+
+
+                    /* Show hardware */
+
+                    else if (
+                        selectedFilter === "hardware" &&
+                        (
+                            category === "embedded" ||
+                            category === "robotics"
+                        )
+                    ) {
+
+                        project.style.display = "";
+
+                    }
+
+
+                    /* Show software */
+
+                    else if (
+                        selectedFilter === "software" &&
+                        (
+                            category === "software-development" ||
+                            category === "games"
+                        )
+                    ) {
+
+                        project.style.display = "";
+
+                    }
+
+
+                    /* Show specific category */
+
+                    else if (
+                        category === selectedFilter
+                    ) {
+
+                        project.style.display = "";
+
+                    }
+
+
+                    /* Hide everything else */
+
+                    else {
+
+                        project.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
 
 </body>
 

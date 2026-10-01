@@ -1,8 +1,18 @@
+let canvas;
+
 let currentCharacter = 0;
 let nextCharacterTime = 0;
 
 function setup() {
-    createCanvas(windowWidth, 200);
+
+    const container = document.getElementById("canvas-container");
+
+    canvas = createCanvas(
+        container.offsetWidth,
+        140
+    );
+
+    canvas.parent("canvas-container");
 
     textFont("IBM Plex Sans");
     textStyle(BOLD);
@@ -12,52 +22,106 @@ function setup() {
     nextCharacterTime = millis() + 400;
 }
 
+
 function windowResized() {
-    resizeCanvas(windowWidth, 200);
+
+    const container = document.getElementById("canvas-container");
+
+    resizeCanvas(
+        container.offsetWidth,
+        140
+    );
+
 }
 
+
 function typewriter(string) {
+
     clear();
 
-    let displayedText = string.substring(0, currentCharacter);
+    let displayedText =
+        string.substring(0, currentCharacter);
 
-    text(displayedText, width / 2, height - 50);
+
+    /*
+       Center the text relative to the
+       actual canvas width.
+    */
+
+    const centerX = width / 2;
+    const centerY = height - 40;
+
+
+    text(
+        displayedText,
+        centerX,
+        centerY
+    );
+
 
     // Blinking cursor
     let cursorX =
-        width / 2 +
+        centerX +
         textWidth(displayedText) / 2 +
         5;
 
-    if (currentCharacter < string.length || frameCount % 60 < 30) {
-        text("|", cursorX, height - 50);
+
+    if (
+        currentCharacter < string.length ||
+        frameCount % 60 < 30
+    ) {
+
+        text(
+            "|",
+            cursorX,
+            centerY
+        );
+
     }
 
-    // Type each character at a slightly different speed
+
+    // Typewriter timing
     if (
         currentCharacter < string.length &&
         millis() >= nextCharacterTime
     ) {
+
         currentCharacter++;
 
-        let delay = random(45, 130);
+        let delay =
+            random(45, 130);
+
 
         // Slightly longer pause after spaces
-        if (string[currentCharacter - 1] === " ") {
+        if (
+            string[currentCharacter - 1] === " "
+        ) {
+
             delay += random(40, 100);
+
         }
+
 
         // Occasional natural pause
         if (random() < 0.08) {
+
             delay += random(150, 350);
+
         }
 
-        nextCharacterTime = millis() + delay;
+
+        nextCharacterTime =
+            millis() + delay;
+
     }
+
 }
 
-function draw() {
-    let introText = "WELCOME TO MY PORTFOLIO";
 
-    typewriter(introText);
+function draw() {
+
+    typewriter(
+        "WELCOME TO MY PORTFOLIO"
+    );
+
 }

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Meddon&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
+
+/* =========================
+   RESET
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -8,32 +13,56 @@ html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
 }
 
 body {
     overflow-x: hidden;
+
     background-color: #7a7a7d32;
     color: #171717;
+
     font-family: "IBM Plex Sans", sans-serif;
 }
 
+button {
+    font: inherit;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
 .page {
     position: relative;
+
     width: 100%;
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     z-index: 1;
 }
 
+
+/* =========================
+   BACKGROUND SCRIBBLE
+========================= */
+
 #scribble-container {
     position: fixed;
+
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     z-index: 2;
+
     pointer-events: none;
 }
 
@@ -41,49 +70,88 @@ body {
     display: block;
 }
 
+
+/* =========================
+   WELCOME CANVAS
+========================= */
+
 #canvas-container {
-    width: 100%;
     position: relative;
+
+    width: 100%;
+    height: 140px;
+
+    margin: 0;
+    padding: 0;
+
     z-index: 1;
+
+    overflow: visible;
 }
 
-canvas {
+#canvas-container canvas {
     display: block;
+
+    width: 100%;
+    height: 140px;
+
+    margin: 0;
+    padding: 0;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
-    padding: 24px 3vw;
+
+    padding: 12px 2.5vw;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     z-index: 10;
 }
 
 .logo {
     font-family: "Meddon", cursive;
-    font-size: clamp(18px, 1.8vw, 24px);
+
+    font-size: 16px;
     font-weight: 400;
+
     color: #171717;
+
     text-decoration: none;
+
     white-space: nowrap;
 }
 
 .navigation {
     display: flex;
-    gap: clamp(12px, 2vw, 24px);
+
+    gap: 16px;
 }
 
 .navigation a {
     font-family: "IBM Plex Sans", sans-serif;
-    font-size: clamp(8px, 0.9vw, 11px);
+
+    font-size: 8px;
     font-weight: 600;
+
     letter-spacing: 0.08em;
+
     color: #171717;
+
     text-decoration: none;
+
     white-space: nowrap;
 }
 
@@ -91,13 +159,21 @@ canvas {
     opacity: 0.5;
 }
 
+
+/* =========================
+   GENERAL TYPOGRAPHY
+========================= */
+
 h1,
 h2,
 h3,
 .collection-title {
     font-family: "IBM Plex Sans", sans-serif;
+
     font-weight: 600;
+
     text-transform: uppercase;
+
     letter-spacing: 0.08em;
 }
 
@@ -106,71 +182,243 @@ h3,
 .category,
 nav {
     font-family: "IBM Plex Sans", sans-serif;
+
     font-size: 0.7rem;
     font-weight: 600;
+
     text-transform: uppercase;
+
     letter-spacing: 0.15em;
 }
 
 p,
 .description {
     font-family: "IBM Plex Sans", sans-serif;
+
     font-weight: 400;
+
     text-transform: none;
+
     letter-spacing: normal;
 }
 
-.project-gallery {
-    position: relative;
-    z-index: 1;
+
+/* =========================
+   PROJECT FILTERS
+========================= */
+
+.project-filters {
     width: 100%;
+
     display: flex;
+
     justify-content: center;
     align-items: flex-start;
-    gap: 8px;
-    padding: 0 20px;
+
+    gap: 70px;
+
+    margin: 0 auto 6px;
+    padding: 0;
+}
+
+.filter-group {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   FILTER TEXT
+========================= */
+
+.filter-main,
+.filter-options button {
+    display: inline-block;
+
+    width: auto;
+    height: auto;
+
     margin: 0;
+    padding: 0;
+
+    border: none !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    border-radius: 0;
+
+    box-shadow: none !important;
+
+    font-family: "IBM Plex Sans", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #171717;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   MAIN FILTERS
+========================= */
+
+.filter-main {
+    font-weight: 600;
+}
+
+
+/* =========================
+   SUBDIVISIONS
+========================= */
+
+.filter-options {
+    display: flex;
+
+    gap: 20px;
+}
+
+.filter-options button {
+    font-weight: 400;
+}
+
+
+/* =========================
+   REMOVE FOCUS OUTLINE
+========================= */
+
+.filter-main:focus,
+.filter-main:focus-visible,
+.filter-main:active,
+
+.filter-options button:focus,
+.filter-options button:focus-visible,
+.filter-options button:active {
+    border: none !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================
+   FILTER HOVER
+========================= */
+
+.filter-main:hover,
+.filter-options button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   PROJECT GALLERY
+========================= */
+
+.project-gallery {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    padding: 0 20px;
+
+    margin: 10px 0 0;
+
+    z-index: 1;
 }
 
 .project-image {
     position: relative;
+
     width: 280px;
     height: 280px;
+
     flex-shrink: 0;
+
     overflow: hidden;
-    transition: transform 0.4s ease, filter 0.4s ease;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
 }
 
 .project-image img {
+    display: block;
+
     width: 100%;
     height: 100%;
-    display: block;
+
     object-fit: cover;
+
     filter: grayscale(40%);
+
     transition: filter 0.5s ease;
 }
 
 .project-image:hover {
     transform: translateY(-8px) scale(1.05);
+
     z-index: 3;
-    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.25));
+
+    filter: drop-shadow(
+        0 12px 20px rgba(0, 0, 0, 0.25)
+    );
 }
 
 .project-image:hover img {
     filter: grayscale(0%);
 }
 
+
+/* =========================
+   PROJECT NUMBER
+========================= */
+
 .project-image::after {
     content: attr(data-number);
+
     position: absolute;
+
     top: 10px;
     left: 10px;
+
     font-family: "IBM Plex Sans", sans-serif;
+
     font-size: 10px;
     font-weight: 600;
+
     letter-spacing: 0.1em;
+
     color: #171717;
+
     opacity: 0;
+
     transition: opacity 0.3s ease;
 }
 
@@ -178,33 +426,137 @@ p,
     opacity: 1;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 .footer {
     width: 100%;
+
     margin-top: auto;
+
     padding: 20px 3vw;
+
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     flex-shrink: 0;
+
     font-family: "IBM Plex Sans", sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 0.08em;
+
     color: #171717;
+
     opacity: 0.55;
+
     z-index: 1;
 }
 
+
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 1200px) {
+
+    .project-filters {
+        gap: 45px;
+    }
+
     .project-image {
         width: 23vw;
         height: 23vw;
     }
+
 }
 
+
+/* =========================
+   SMALL TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .project-filters {
+        gap: 30px;
+    }
+
+    .filter-options {
+        gap: 12px;
+    }
+
+    .project-gallery {
+        gap: 6px;
+        padding: 0 12px;
+    }
+
+    .project-image {
+        width: calc((100vw - 24px - 18px) / 4);
+        height: calc((100vw - 24px - 18px) / 4);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 600px) {
+
+    .header {
+        padding: 10px 4vw;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .navigation {
+        gap: 10px;
+    }
+
+    .navigation a {
+        font-size: 7px;
+    }
+
+
+    .project-filters {
+        gap: 18px;
+
+        margin-bottom: 5px;
+
+        padding: 0 10px;
+    }
+
+    .filter-group {
+        gap: 6px;
+    }
+
+    .filter-options {
+        gap: 8px;
+    }
+
+    .filter-main,
+    .filter-options button {
+        font-size: 8px;
+
+        letter-spacing: 0.7px;
+    }
+
+
     .project-gallery {
         gap: 4px;
+
         padding: 0 10px;
+
+        margin-top: 8px;
     }
 
     .project-image {
@@ -212,9 +564,39 @@ p,
         height: calc((100vw - 20px - 12px) / 4);
     }
 
+
     .footer {
         flex-direction: column;
+
         align-items: center;
+
         gap: 6px;
     }
+
+}
+
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media (max-width: 430px) {
+
+    .project-filters {
+        gap: 12px;
+
+        padding: 0 6px;
+    }
+
+    .filter-options {
+        gap: 5px;
+    }
+
+    .filter-main,
+    .filter-options button {
+        font-size: 7px;
+
+        letter-spacing: 0.5px;
+    }
+
 }
