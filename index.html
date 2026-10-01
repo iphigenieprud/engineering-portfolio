@@ -8,12 +8,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Meddon&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Meddon&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- Background scribble animation -->
+    <div id="scribble-container"></div>
 
     <div class="page">
 
@@ -30,6 +37,7 @@
         <main id="canvas-container"></main>
 
         <section class="project-gallery" id="projects">
+
             <div class="project-image" data-number="01">
                 <img src="images/project1.jpg" alt="Project 1">
             </div>
@@ -45,6 +53,7 @@
             <div class="project-image" data-number="04">
                 <img src="images/project4.jpg" alt="Project 4">
             </div>
+
         </section>
 
         <footer class="footer">
@@ -57,8 +66,11 @@
     <!-- p5.js -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
 
-    <!-- Your p5.js animation -->
+    <!-- Main portfolio animation -->
     <script src="sketch.js"></script>
+
+    <!-- Background scribble animation -->
+    <script src="scribble.js"></script>
 
 </body>
 

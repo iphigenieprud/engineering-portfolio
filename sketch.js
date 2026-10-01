@@ -1,5 +1,5 @@
-
 let currentCharacter = 0;
+let nextCharacterTime = 0;
 
 function setup() {
     createCanvas(windowWidth, 200);
@@ -8,6 +8,8 @@ function setup() {
     textStyle(BOLD);
     textSize(20);
     textAlign(CENTER, CENTER);
+
+    nextCharacterTime = millis() + 400;
 }
 
 function windowResized() {
@@ -17,22 +19,45 @@ function windowResized() {
 function typewriter(string) {
     clear();
 
-    let displayed_text = string.substring(0, currentCharacter);
-    text(displayed_text, width / 2, height-50);
+    let displayedText = string.substring(0, currentCharacter);
+
+    text(displayedText, width / 2, height - 50);
 
     // Blinking cursor
-    let cursorX = width / 2 + textWidth(displayed_text) / 2 + 5;
+    let cursorX =
+        width / 2 +
+        textWidth(displayedText) / 2 +
+        5;
 
     if (currentCharacter < string.length || frameCount % 60 < 30) {
-        text("|", cursorX, height-50);
+        text("|", cursorX, height - 50);
     }
 
-    if (frameCount % 10 === 0 && currentCharacter < string.length) {
+    // Type each character at a slightly different speed
+    if (
+        currentCharacter < string.length &&
+        millis() >= nextCharacterTime
+    ) {
         currentCharacter++;
+
+        let delay = random(45, 130);
+
+        // Slightly longer pause after spaces
+        if (string[currentCharacter - 1] === " ") {
+            delay += random(40, 100);
+        }
+
+        // Occasional natural pause
+        if (random() < 0.08) {
+            delay += random(150, 350);
+        }
+
+        nextCharacterTime = millis() + delay;
     }
 }
 
 function draw() {
-    let intro_text = "WELCOME TO MY PORTFOLIO";
-    typewriter(intro_text);
+    let introText = "WELCOME TO MY PORTFOLIO";
+
+    typewriter(introText);
 }
